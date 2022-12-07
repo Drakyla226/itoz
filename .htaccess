@@ -1,0 +1,260 @@
+
+Options -Indexes 
+ErrorDocument 404 /404.php
+
+#RewriteEngine On
+#RewriteBase /
+#
+#редирект на www версию
+RewriteCond %{HTTP_HOST} ^tulatoz.ru$ [NC]
+RewriteRule ^(.*)$ http://www.tulatoz.ru/$1 [R=301,L]
+#
+
+RewriteCond %{HTTP_HOST} !^tulatoz\.ru$ [NC]
+RewriteRule ^(.*)$ http://itoz.ru/$1 [L,R=301]
+
+
+RewriteRule ^sitemap\.xml$ sitemap\.php [L]  
+
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+#редирект для index.php & index.html
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+RewriteRule ^index\.html$ http://www.tulatoz.ru [R=301,L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+RewriteRule ^index\.php$ http://www.tulatoz.ru [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/produktsiya/grazhdanskaya-produktsiya/$
+RewriteRule ^.*$ https://www.tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/? [R=301,L]
+
+Redirect 301 /produktsiya/grazhdanskaya-produktsiya/ /produktsiya/ognestrelnoe-orujie/
+
+
+<IfModule mod_php5.c>
+  php_flag session.use_trans_sid off
+  #php_value display_errors 1
+  #php_value mbstring.internal_encoding UTF-8
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  Options +FollowSymLinks
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
+  RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
+  RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+  
+  
+  
+  
+</IfModule>
+
+<IfModule mod_dir.c>
+  DirectoryIndex index.php index.html
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+  ExpiresByType image/jpeg "access plus 3 day"
+  ExpiresByType image/gif "access plus 3 day"
+  ExpiresByType image/png "access plus 3 day"
+  ExpiresByType text/css "access plus 3 day"
+  ExpiresByType application/javascript "access plus 3 day"  
+</IfModule>
+
+<IfModule mod_expires.c>
+# Enable expirations
+ExpiresActive On 
+# Default directive
+ExpiresDefault "access plus 1 month"
+# My favicon
+ExpiresByType image/x-icon "access plus 1 year"
+# Images
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType image/jpg "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+# CSS
+ExpiresByType text/css "access plus 1 month"
+# Javascript
+ExpiresByType application/javascript "access plus 1 year"
+</IfModule>
+
+#постраничные редиректы
+#Redirect 301 /akcioneram-investoram/sobraniya.php$ http://tulatoz.ru/aktsioneram-i-investoram/obshchie-sobraniya-aktsionerov/
+#Redirect 301 /%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D0%B8/index.php$ http://tulatoz.ru/istoriya/
+#Redirect 301 /akcioneram-investoram/godovoe-2013.php$ http://tulatoz.ru/aktsioneram-i-investoram/obshchie-sobraniya-aktsionerov/
+#Redirect 301 /akcioneram-investoram/%D0%92%D0%9E%D0%A1%D0%90%2008.11.2017.php$ http://tulatoz.ru/aktsioneram-i-investoram/obshchie-sobraniya-aktsionerov/
+#Redirect 301 /akcioneram-investoram/godovoe-po-itogam-za-2016.php$ http://tulatoz.ru/aktsioneram-i-investoram/obshchie-sobraniya-aktsionerov/
+#Redirect 301 /akcioneram-investoram/%D0%92%D0%BD%D0%B5%D0%BE%D1%87%D0%B5%D1%80%D0%B5%D0%B4%D0%BD%D0%BE%D0%B5%20%D0%BE%D0%B1%D1%89%D0%B5%D0%B5%20%D1%81%D0%BE%D0%B1%D1%80%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B0%D0%BA%D1%86%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D0%BE%D0%B2%20-%2025.08.2016%20%D0%B3..php$ http://tulatoz.ru/aktsioneram-i-investoram/obshchie-sobraniya-aktsionerov/
+#Redirect 301 /dlya-potrebitelya/dealers.php$ http://tulatoz.ru/dlya-potrebitelya/dilery/
+#Redirect 301 /akcioneram-investoram/godovoe-2015.php$ http://tulatoz.ru/aktsioneram-i-investoram/obshchie-sobraniya-aktsionerov/
+#Redirect 301 /akcioneram-investoram/godovoe-2016.php$ http://tulatoz.ru/aktsioneram-i-investoram/obshchie-sobraniya-aktsionerov/
+#Redirect 301 /akcioneram-investoram/$ http://tulatoz.ru/aktsioneram-i-investoram/
+#Redirect 301 /dlya-potrebitelya/remont.php$ http://tulatoz.ru/dlya-potrebitelya/remont/
+#Redirect 301 /akcioneram-investoram/vneocherednoe-godovoe-2015.php$ http://tulatoz.ru/aktsioneram-i-investoram/obshchie-sobraniya-aktsionerov/
+#Redirect 301 /akcioneram-investoram/vneocherednoe-2017.php$ http://tulatoz.ru/aktsioneram-i-investoram/obshchie-sobraniya-aktsionerov/
+#Redirect 301 /akcioneram-investoram/registrator-info.php$ http://tulatoz.ru/aktsioneram-i-investoram/registrator-obshchestva/
+#Redirect 301 /production/list.php?SECTION_ID=2$ http://tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/
+#Redirect 301 /production/list.php?SECTION_ID=1$ http://tulatoz.ru/produktsiya/voennaya-produktsiya/
+#Redirect 301 /o-nas-pishut/index.php$ http://tulatoz.ru/istoriya/
+#Redirect 301 /production/detail.php?ID=49&SECTION_ID=2$ http://tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/ruzhe-okhotniche-dvustvolnoe-toz-34-suvenirnoe/
+#Redirect 301 /production/detail.php?ID=88&SECTION_ID=2$ http://tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/
+#Redirect 301 /production/detail.php?ID=30&SECTION_ID=1$ http://tulatoz.ru/produktsiya/voennaya-produktsiya/
+#Redirect 301 /production/detail.php?ID=43&SECTION_ID=2$ http://tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/karabin-okhotnichiy-malokalibernyy-semeystva-toz-78/
+#Redirect 301 /production/detail.php?ID=31&SECTION_ID=1$ http://tulatoz.ru/produktsiya/voennaya-produktsiya/
+#Redirect 301 /production/detail.php?ID=35&SECTION_ID=2$ http://tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/ruzhya-okhotnichi-dvustvolnye-toz-33/
+#Redirect 301 /production/$ http://tulatoz.ru/produktsiya/
+#Redirect 301 /akcioneram-investoram/dividend-history.php$ http://tulatoz.ru/aktsioneram-i-investoram/dividendnaya-istoriya/
+#Redirect 301 /dlya-potrebitelya/oborudovanie.php$ http://tulatoz.ru/dlya-potrebitelya/
+#Redirect 301 /akcioneram-investoram/vneocherednoe-godovoe-%D0%B4%D0%B5%D0%BA%D0%B0%D0%B1%D1%80%D1%8C%202015.php$ http://tulatoz.ru/aktsioneram-i-investoram/obshchie-sobraniya-aktsionerov/
+#Redirect 301 /akcioneram-investoram/godovoe-2013(1).php$ http://tulatoz.ru/aktsioneram-i-investoram/obshchie-sobraniya-aktsionerov/
+#Redirect 301 /production/detail.php?ID=149&SECTION_ID=2$ http://tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/karabin-okhotnichiy-samozaryadnyy-ko-40/
+#Redirect 301 /production/detail.php?ID=152&SECTION_ID=2$ http://tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/karabin-okhotnichiy-ko-44/
+#Redirect 301 /production/detail.php?ID=15&SECTION_ID=1$ http://tulatoz.ru/produktsiya/voennaya-produktsiya/9-mm-vintovka-snayperskaya-spetsialnaya-vss-/
+#Redirect 301 /production/detail.php?ID=150&SECTION_ID=2$ http://tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/karabin-okhotnichiy-samozaryadnyy-op-sks/
+#Redirect 301 /production/detail.php?ID=151&SECTION_ID=2$ http://tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/karabin-okhotnichiy-ko-91-30/
+#Redirect 301 /dlya-potrebitelya/$ http://tulatoz.ru/dlya-potrebitelya/
+#Redirect 301 /production/detail.php?ID=12&SECTION_ID=1$ http://tulatoz.ru/produktsiya/voennaya-produktsiya/upravlyaemaya-raket-9m113m-kompleksa-9k111m4-konkurs-m/
+#Redirect 301 /production/detail.php?ID=215&SECTION_ID=2$ http://tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/
+#Redirect 301 /en/$ http://en.tulatoz.ru/
+#Redirect 301 /production/detail.php?ID=214&SECTION_ID=2$ http://tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/
+#Redirect 301 /production/detail.php?ID=13&SECTION_ID=1$ http://tulatoz.ru/produktsiya/voennaya-produktsiya/9-mm-malogabaritnyy-avtomat-am-/
+#Redirect 301 /en/production/$ http://en.tulatoz.ru/produktsiya/
+#Redirect 301 /en/dlya-potrebitelya/$ http://en.tulatoz.ru/dlya-potrebitelya/
+#Redirect 301 /en/svyazatsa-s-nami/adreses.php$ http://en.tulatoz.ru/kontakty/
+#Redirect 301 /o-predpriyatii/news/$ http://tulatoz.ru/novosti/
+#Redirect 301 /en/production/detail.php?ID=63&SECTION_ID=6$ http://en.tulatoz.ru/produktsiya/voennaya-produktsiya/9mm-special-sniper-rifle-vss/
+#Redirect 301 /en/production/detail.php?ID=61&SECTION_ID=6$ http://en.tulatoz.ru/produktsiya/voennaya-produktsiya/9mm-small-size-assault-rifle-am/
+#Redirect 301 /en/production/detail.php?ID=69&SECTION_ID=6$ http://en.tulatoz.ru/produktsiya/voennaya-produktsiya/
+#Redirect 301 /en/production/detail.php?ID=66&SECTION_ID=6$ http://en.tulatoz.ru/produktsiya/voennaya-produktsiya/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=147$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=146$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=143$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=144$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=141$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=140$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=148$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=161$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=160$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=157$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=156$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=158$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=155$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=154$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=159$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=124$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=123$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=120$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=122$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=121$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=127$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=135$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=134$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=136$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=133$ http://tulatoz.ru/novosti/
+#Redirect 301 /akcioneram-investoram/vneocherednoe-11.04.2017.php$ http://tulatoz.ru/aktsioneram-i-investoram/obshchie-sobraniya-aktsionerov/
+#Redirect 301 /o-predpriyatii/history.php$ http://tulatoz.ru/istoriya/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=132$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=131$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=138$ http://tulatoz.ru/novosti/
+#Redirect 301 /production/detail.php?ID=91&SECTION_ID=2$ http://tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=137$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=194$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=193$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=192$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=153$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=191$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=190$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=189$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=188$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=187$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=186$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=185$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=184$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=199$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=198$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=197$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=196$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=195$ http://tulatoz.ru/novosti/
+#Redirect 301 /en/dlya-potrebitelya/remont.php$ http://en.tulatoz.ru/dlya-potrebitelya/where-to-repair/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=172$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=171$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=168$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=170$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=169$ http://tulatoz.ru/novosti/
+#Redirect 301 /en/o-predpriyatii/$ http://en.tulatoz.ru/istoriya/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=167$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=166$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=165$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=163$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=164$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=182$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=16$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=162$ http://tulatoz.ru/novosti/
+#Redirect 301 /en/production/list.php?SECTION_ID=7$ http://en.tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=181$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=180$ http://tulatoz.ru/novosti/
+#Redirect 301 /en/production/detail.php?ID=105&SECTION_ID=7$ http://en.tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/
+#Redirect 301 /en/production/detail.php?ID=76&SECTION_ID=7$ http://en.tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/
+#Redirect 301 /en/production/detail.php?ID=102&SECTION_ID=7$ http://en.tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/
+#Redirect 301 /en/production/list.php?SECTION_ID=6$ http://en.tulatoz.ru/produktsiya/voennaya-produktsiya/
+#Redirect 301 /production/detail.php?ID=14&SECTION_ID=1$ http://tulatoz.ru/produktsiya/voennaya-produktsiya/9-mm-avtomat-spetsialnyy-as-/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=179$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=177$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=175$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=176$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=178$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/$ http://tulatoz.ru/istoriya/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=173$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=174$ http://tulatoz.ru/novosti/
+#Redirect 301 /en/production/detail.php?ID=101&SECTION_ID=7$ http://en.tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/
+#Redirect 301 /en/production/detail.php?ID=72&SECTION_ID=7$ http://en.tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/
+#Redirect 301 /en/production/detail.php?ID=62&SECTION_ID=6$ http://en.tulatoz.ru/produktsiya/voennaya-produktsiya/9mm-special-assault-rifle-as/
+#Redirect 301 /en/o-predpriyatii/news/detail.php?ID=142$ http://tulatoz.ru/novosti/
+#Redirect 301 /en/o-predpriyatii/news/detail.php?ID=145$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/?PAGEN_1=4$ http://tulatoz.ru/novosti/
+#Redirect 301 /svyazatsa-s-nami/adreses.php$ http://tulatoz.ru/kontakty/
+#Redirect 301 /o-predpriyatii/news/?PAGEN_1=5$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/?PAGEN_1=2$ http://tulatoz.ru/novosti/
+#Redirect 301 /svyazatsa-s-nami/phones.php$ http://tulatoz.ru/kontakty/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=109$ http://tulatoz.ru/novosti/
+#Redirect 301 /en/production/detail.php?ID=55&SECTION_ID=6$ http://en.tulatoz.ru/produktsiya/voennaya-produktsiya/guided-missile-9m113m-of-konkurs-m-9k111m4-complex/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=112$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=111$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=110$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=119$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=118$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=117$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=116$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=202$ http://tulatoz.ru/novosti/pao-tulskiy-oruzheynyy-zavod-okazyvaet-uslugi-po-poverke-sredstv-izmereniy/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=200$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=201$ http://tulatoz.ru/novosti/sdelka-mezhdu-pao-tulskiy-oruzheynyy-zavod-i-ao-ak-tulamashzavod/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=209$ http://tulatoz.ru/novosti/itogi-sovet-direktorov-23-06-2017-g/
+#Redirect 301 /en/production/detail.php?ID=100&SECTION_ID=7$ http://en.tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=208$ http://tulatoz.ru/novosti/pao-toz-i-ooo-stroitelnaya-kompaniya-favorit-pristupili-v-realizatsii-proekta-zhilishchnyy-kompleks-/
+#Redirect 301 /en/production/detail.php?ID=99&SECTION_ID=7$ http://en.tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/double-barrel-hunting-shotgun-toz-34-souvenir/
+#Redirect 301 /en/production/detail.php?ID=81&SECTION_ID=7$ http://en.tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/small-bore-hunting-carbines-of-toz-78-series/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=207$ http://tulatoz.ru/novosti/vstrecha-obrazovatelnykh-organizatsiy-s-predstavitelyami-toza/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=204$ http://tulatoz.ru/novosti/pao-tulskiy-oruzheynyy-zavod-obyavlyaet-o-provedenii-otkrytogo-konkursa-po-otboru-auditorskikh-organ/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=205$ http://tulatoz.ru/novosti/tulskomu-oruzheynomu-zavodu-ispolnilos-305-let-so-dnya-osnovaniya/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=203$ http://tulatoz.ru/novosti/mezhdunarodnaya-oboronnaya-vystavka-idex-2017/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=206$ http://tulatoz.ru/novosti/ooo-gruppa-finansy-pobeditel-konkursa-po-otboru-auditorskoy-organizatsii/
+#Redirect 301 /en/production/detail.php?ID=71&SECTION_ID=7$ http://en.tulatoz.ru/produktsiya/grazhdanskaya-produktsiya/double-barrel-hunting-shotgun-toz-34/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=213$ http://tulatoz.ru/novosti/rezultaty-provedeniya-spetsialnoy-otsenki-usloviy-truda-za-2015-i-2016-gody/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=212$ http://tulatoz.ru/novosti/nagrady-oruzheynikam/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=97$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=96$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=211$ http://tulatoz.ru/novosti/ot-teorii-k-praktike-vypusknikam-tgmk-im-n-demidova-vruchili-diplomy-ob-okonchanii/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=210$ http://tulatoz.ru/novosti/otkrytie-pamyatnogo-kamnya-k-305-letiyu-tulskogo-oruzheynogo-zavoda/
+#Redirect 301 /en/o-predpriyatii/history.php$ http://en.tulatoz.ru/istoriya/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=219$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=218$ http://tulatoz.ru/novosti/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=216$ http://tulatoz.ru/novosti/vzvod-tulskogo-oruzheynogo-zavoda-na-gonke-geroev/
+#Redirect 301 /o-predpriyatii/news/detail.php?ID=217$ http://tulatoz.ru/novosti/iii-turnir-po-strelbe-pamyati-sotrudnika-v-tssn-fsb-rossii-kapitana-stashchenko-romana-petrovicha/
+#Redirect 301 /dlya-potrebitelya/unmarketable.php$ http://tulatoz.ru/dlya-potrebitelya/nelikvidy/
+#Redirect 301 /en/svyazatsa-s-nami/phones.php$ http://en.tulatoz.ru/kontakty/

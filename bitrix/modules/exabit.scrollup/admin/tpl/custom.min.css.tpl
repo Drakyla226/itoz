@@ -1,0 +1,1 @@
+.scrollup-btn{border-radius:[[shape]];[[btn_side]]:[[side_pos]]px;bottom:[[bottom_pos]]px;background:#[[color]];width:[[shape_size]]px;height:[[shape_size]]px}.btn-hide{[[show_effect]]}.scrollup-btn svg{width:[[svg_size]]px;height:[[svg_size]]px}

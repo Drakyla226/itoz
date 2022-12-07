@@ -1,0 +1,145 @@
+.header-contacts {
+    /*border-left: 1px solid #3b3b3b;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0;
+    /*position: absolute;*/
+    right: 150px;
+    top: 0;
+    height: 63px;
+    width: 440px;
+}
+.contacts-line._social._header {
+    display: flex;
+    justify-content: space-between;
+}
+.contacts-line._social._header .facebook {
+    background: url(/local/templates/index/img/icons/facebook.svg) center no-repeat;
+    -webkit-background-size: 27px 27px;
+    background-size: 27px 27px;
+    /* padding-left: 29px; */
+    text-decoration: none;
+    width: 30px;
+    height: 30px;
+}
+.contacts-line._social._header .instagramm {
+    background: url(/local/templates/index/img/icons/instagram.svg) center no-repeat;
+    -webkit-background-size: 27px 27px;
+    background-size: 27px 27px;
+    /* padding-left: 29px; */
+    text-decoration: none;
+    width: 30px;
+    height: 30px;
+}
+
+.zvezda_block {
+    margin-top: 40px;
+    position: relative;
+}
+._button.button_zvezda {
+    padding-top: 0;
+    display: flex;
+    align-items: center;
+}
+._button.button_zvezda:hover {
+    background-color: #6c0316;
+    border-color: #6c0316;
+    color: #fff;
+}
+._button.button_zvezda:hover .right-arrow._zvezda {
+    color: #fff;
+}
+.right-arrow._zvezda {
+    max-width: 240px;
+    width: 100%;
+    padding-left: 53px;
+    display: block;
+    text-align: left;
+    color: #171616;
+}
+img.logotypeTop {
+    /* width: 50%; */
+    margin-top: 20px;
+    position: absolute;
+    left: -49px;
+    top: -41px;
+    width: 99px;
+}
+.index-title {
+    display: none;
+}
+a.link-tozarms {
+    padding: 5px;
+    border: 4px solid #6c0316;
+    text-decoration: none;
+}
+
+.title._main._about-index{
+    margin-bottom: 0;
+}
+
+.company__jump {
+    padding-top: 40px;
+    padding-bottom: 90px;
+}
+.logo__dowload_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 250px;
+}
+
+.logo__cdr, .logo__pdf {
+    width: 100%;
+}
+
+.logo__cdr a, .logo__pdf a {
+    color: #6c0316;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+@media screen and (min-width: 1801px){
+    .header-menu__link {
+        font-size: 12px;    
+        padding: 0 5px;
+    }
+}
+@media screen and (max-width: 1800px) {
+    .header-contacts {
+        width: 470px;
+    }
+    .header-menu {
+        padding: 17px;
+        border-right: 1px solid black;
+    }
+}
+@media screen and (max-width: 768px){
+    .header-contacts {
+        width: 290px;
+    }
+}
+
+@media screen and (max-width: 640px){
+    .header-menu {
+        padding: 10px 0 0 17px;
+    }
+    .header-contacts {
+       height: 40px; 
+       width: 260px;
+       right: 110px;
+   }
+}
+
+@media screen and (max-width: 470px){
+    .contacts-line._header {
+        display: none;
+    }
+    .header-contacts {
+        width: 90px;
+    }
+}

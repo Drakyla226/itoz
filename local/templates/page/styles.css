@@ -1,0 +1,32 @@
+.knop {
+    font-size: 24px;
+    display: inline-block;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    text-transform: uppercase;
+}
+.blok-V {display: none;}
+.knop {cursor: pointer;}
+.blok-V.activ {display: block;}
+.blok-V.ser.activ {background-color: #e8e8e8;}
+.products-page__gallery {right: 0px;}
+.products-page__photo {width: 80%;}
+.knop.activ h3 {
+    border-bottom: 3px solid #6c0316;
+    padding-bottom: 10px;
+}
+._silver .slick-prev {margin: 0 0 0 -15px;bottom: 65px;left: 110%;top: inherit;-moz-transform: rotate(-90deg);-ms-transform: rotate(-90deg);-webkit-transform: rotate(-90deg);-o-transform: rotate(-90deg);transform: rotate(-180deg);}
+
+._silver .slick-next {margin: 0 -15px 0 0;right: 110%;top: 55px;-moz-transform: rotate(90deg);-ms-transform: rotate(90deg);-webkit-transform: rotate(90deg);-o-transform: rotate(90deg);transform: rotate(0deg);}
+.products-page__video{
+	border: 1px solid #3b3b3b;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    right: 0px;
+    top: 200px;
+    height: 180px;
+    width: 227px;
+    z-index: 1;
+}

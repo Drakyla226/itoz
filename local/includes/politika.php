@@ -1,0 +1,1 @@
+<a href="/upload/politika.docx" trget="_blank">Политика конфиденциальности</a>

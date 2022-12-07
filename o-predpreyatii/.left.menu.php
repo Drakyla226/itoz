@@ -1,0 +1,39 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"История", 
+		"/o-predpreyatii/istoriya/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Отчётность", 
+		"/o-predpreyatii/otchetnost", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Файлы", 
+		"/o-predpreyatii/fayly/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Руководство ", 
+		"/o-predpreyatii/rukovodstvo/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Мемориальный комплекс", 
+		"/o-predpreyatii/memorialkompleks/", 
+		Array(), 
+		Array(), 
+		"" 
+	)
+);
+?>

@@ -1,0 +1,12 @@
+2022-Dec-07 01:59:12 Required PHP Modules (check_php_modules): Ok
+All required modules are installed.
+2022-Dec-07 01:59:12 PHP Required Parameters (check_php_settings): Ok
+Settings are correct
+2022-Dec-07 01:59:12 Web server modules (check_security): Ok
+No conflicts.
+2022-Dec-07 01:59:12 Server Variables (check_server_vars): Ok
+Correct
+2022-Dec-07 01:59:12 Session retention (check_session): Ok
+50% done
+2022-Dec-07 01:59:12 UTF configuration parameters (mbstring and BX_UTF) (check_mbstring): Fail
+Error! The website runs in UTF encoding, mbstring parameters:mbstring.func_overload=0mbstring.internal_encoding="utf-8"default_charset="utf-8"required:mbstring.func_overload=2mbstring.internal_encoding=""default_charset="utf-8"
