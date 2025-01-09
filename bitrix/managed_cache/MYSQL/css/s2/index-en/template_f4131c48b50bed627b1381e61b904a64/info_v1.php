@@ -1,1 +1,0 @@
-<? $filesInfo = array("/local/templates/index-en/styles/normalize.css" => "15209273842260","/local/templates/index-en/js/slick/slick.css" => "15209273875012","/local/templates/index-en/js/scroll/scrollbar.css" => "152092738754850","/local/templates/index-en/js/fancybox/fancybox.css" => "15209273874695","/local/templates/index-en/styles/styles.css" => "152092738455586",); ?>

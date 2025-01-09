@@ -1,1 +1,0 @@
-<a>mail@tulatoz.ru</a>
